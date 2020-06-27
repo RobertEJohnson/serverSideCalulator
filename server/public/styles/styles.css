@@ -1,0 +1,30 @@
+body{
+    background-color: lightskyblue;
+}
+
+.scrollable{
+    max-height: 129;
+    width: 303px;
+    overflow: scroll;
+}
+
+/* probably could have done this with flex */
+.calculator{ 
+    position: absolute;
+    border-radius: 20px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    top: 50%;
+    left: 50%;
+    width: 305px;
+    transform: translate(-50%,-50%);
+    background-color: lightslategray;
+}
+
+table{
+    z-index: -2;
+}
+
+input{
+    background-color: rgb(112, 201, 112);
+}
