@@ -29,6 +29,7 @@ $(document).ready(onReady);
 
 function onReady(){
     updateResults();
+    $('.number').on('click', numberPressed)
 }
 
 function updateResults(){
@@ -38,4 +39,23 @@ function updateResults(){
         $('tbody').append(tr);
     }
     $('.scrollable').scrollTop(200000); 
+}
+
+function numberPressed(){
+
+    let display = $('input');
+    let displayValue = $(display).val();
+
+    // console.log(display);
+    
+    let key = $(this).text();
+    if(key === '.' && displayValue.includes('.')){
+        return;
+    }
+    // console.log(key);
+    
+    displayValue += key;
+    // console.log(displayValue);
+    
+    display.val(displayValue);
 }

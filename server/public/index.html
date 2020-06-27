@@ -9,68 +9,54 @@
     <link rel="stylesheet" href="styles/bootstrap.min.css">
     <link rel="stylesheet" href="styles/styles.css">
 </head>
-<nav class="navbar navbar-dark bg-dark">
+<body class="">
+    <nav class="navbar navbar-dark bg-dark">
         <a class="navbar-brand" href="/">Server-Side Calculator</a>
         <a class="nav-link" href="https://github.com/PixelWolfe">Robert's Github</a>
-</nav>
-<body class="">
-       
-        <!-- <div class="container border border-info mt-5">
-            <div class="container border border-info">
-                <div class="scrollable border border-info m-auto">
-                    <table class="table table-md table-dark table-hover">
-                        <tbody>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="container border border-info mb-5">
-
-                </div>
-            </div>
-        </div> -->
-
-        <div class="calculator card border border-primary shadow-lg">
-            <div class="scrollable m-auto bg-secondary p-0 m-0">
-                <table class="table table-md table-info table-hover m-0">
-                    <tbody>
-                      
-                    </tbody>
-                </table>
-            </div>
-            <div class="container row mx-auto text-center">
-                <input type="text" class="col-8 ml-1 mt-4 shadow-sm">
-                 <button class=" btn-sm btn-danger col-3 ml-3 mt-4 shadow-sm">AC</button> 
-            </div>
-        
-            <div>
-                <div class="row text-center mx-0">
-                    <button class="btn-lg col-2 m-2 ml-4 mt-4 shadow-sm">7</button>
-                    <button class="btn-lg col-2 m-2 mt-3 mt-4 shadow-sm">8</button>
-                    <button class="btn-lg col-2 m-2 mt-3 mt-4 shadow-sm">9</button>
-                    <button class="btn-lg col-2 m-2 mt-3 mt-4 shadow-sm btn-primary">&divide;</button> 
-                </div>
-                <div class="row text-center mx-0">
-                    <button class="btn-lg col-2 m-2 ml-4 shadow-sm">4</button>
-                    <button class="btn-lg col-2 m-2 shadow-sm">5</button>
-                    <button class="btn-lg col-2 m-2 shadow-sm">6</button>
-                    <button class="btn-lg col-2 m-2 shadow-sm btn-primary">&times;</button> 
-                </div>
-                <div class="row text-center mx-0">
-                    <button class="btn-lg col-2 m-2 ml-4 shadow-sm">1</button>
-                    <button class="btn-lg col-2 m-2 shadow-sm-sm">2</button>
-                    <button class="btn-lg col-2 m-2 shadow-sm">3</button>
-                    <button class="btn-lg col-2 m-2 shadow-sm btn-primary">-</button> 
-                </div>
-                <div class="row text-center mx-0">
-                    <button class="btn-lg col-2 m-2 ml-4 mb-3 shadow-sm">0</button>
-                    <button class="btn-lg col-2 m-2 mb-3 shadow-sm">.</button>
-                    <button class="btn-lg col-2 m-2 mb-3 shadow-sm btn-success">=</button>
-                    <button class="btn-lg col-2 m-2 mb-3 shadow-sm btn-primary">+</button> 
-                </div>
-                
-            </div>
+    </nav>
+    <div class="calculator card border border-primary shadow-lg">
+        <div class="scrollable m-auto bg-secondary p-0 m-0">
+            <table class="table table-md table-info table-hover m-0">
+                <tbody>
+                </tbody>
+            </table>
         </div>
 
 
+        <div>
+            <div class="row justify-content-center">
+                <input type="text" class="col-9 mt-4 shadow-sm">
+            </div>
+            <div class="row mx-0 justify-content-end">
+                <button class="btn-sm btn-warning col-2 mt-3 shadow-sm">CE</button> 
+                <button class="btn-sm btn-danger col-3 mr-4 ml-2 mt-3 shadow-sm">AC</button> 
+            </div>
+            <div class="row mx-0 justify-content-center">
+                <button class="btn-lg btn-light col-2 m-2 shadow-sm number">7</button>
+                <button class="btn-lg btn-light col-2 m-2 shadow-sm number">8</button>
+                <button class="btn-lg btn-light col-2 m-2 shadow-sm number">9</button>
+                <button class="btn-lg col-2 m-2 shadow-sm btn-primary operator">&divide;</button> 
+            </div>
+            <div class="row mx-0 justify-content-center">
+                <button  class="btn-lg btn-light col-2 m-2 shadow-sm number">4</button>
+                <button  class="btn-lg btn-light col-2 m-2 shadow-sm number">5</button>
+                <button  class="btn-lg btn-light col-2 m-2 shadow-sm number">6</button>
+                <button  class="btn-lg col-2 m-2 shadow-sm btn-primary operator">&times;</button> 
+            </div>
+            <div class="row mx-0 justify-content-center">
+                <button  class="btn-lg btn-light col-2 m-2 shadow-sm number">1</button>
+                <button  class="btn-lg btn-light col-2 m-2 shadow-sm-sm number">2</button>
+                <button  class="btn-lg btn-light col-2 m-2 shadow-sm number">3</button>
+                <button  class="btn-lg col-2 m-2 shadow-sm btn-primary operator">-</button> 
+            </div>
+            <div class="row text-center mx-0 justify-content-center">
+                <button  class="btn-lg btn-light col-2 m-2 mb-3 shadow-sm number">0</button>
+                <button  class="btn-lg btn-light col-2 m-2 mb-3 shadow-sm number">.</button>
+                <button  class="btn-lg col-2 m-2 mb-3 shadow-sm btn-success operator">=</button>
+                <button  class="btn-lg col-2 m-2 mb-3 shadow-sm btn-primary operator">+</button> 
+            </div>
+            
+        </div>
+    </div>
 </body>
 </html>
