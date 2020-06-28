@@ -3,16 +3,14 @@ let operator = null;
 $(document).ready(onReady);
 
 function onReady(){
+    //update table results from server
     getResult();
+    //create button handlers
     $('.number').on('click', numberPressed);
     $('.operator').on('click', operatorPressed);
     $('.evaluate').on('click', evaluatePressed);
     $('.ac').on('click', clearInput);
     $('.ce').on('click', clearEntry);
-}
-
-function updateResults(){
-    $('.scrollable').scrollTop(200000); 
 }
 
 function numberPressed(){
@@ -22,6 +20,7 @@ function numberPressed(){
     let operatorIndex = inputValue.indexOf(operator);
     let decimalIndex = inputValue.indexOf('.');
 
+//logic to determine if you can use a decimal or not
  if(key === '.'){
     if(decimalIndex !== -1 && operatorIndex === -1){ //if a decimal is found and there is no operator
         error = 'Please use only one decimal point in a number.';
@@ -45,7 +44,7 @@ function numberPressed(){
         $('input').val(inputValue);
     } 
  }
- else{ //decimal not found
+ else{ //decimal not found simply add the key value to input value
     inputValue+= key;
     $('input').val(inputValue);
  }
@@ -55,16 +54,17 @@ function operatorPressed(){
     let error = '';
     let inputValue = $('input').val();
     
+    //if there is no operator
     if(!operator){
-        if(inputValue[inputValue.length-1] === '.'){
+        if(inputValue[inputValue.length-1] === '.'){ //no operators after a decimal
             error = 'Please include a decimal point value before choosing an operator.';
             console.log(error);
         }
-        else if(inputValue.length === 0){
+        else if(inputValue.length === 0){ //can't start with an operator
             error = 'Please include a value before choosing an operator.';
             console.log(error);
         }
-        else{
+        else{ 
             operator = $(this).text();
             inputValue += ` ${operator} `;
             $('input').val(inputValue);
@@ -77,7 +77,7 @@ function operatorPressed(){
         newInputValue += ` ${operator} `;
         $('input').val(newInputValue);
     }
-    else{
+    else{ //if operator already exists, no more can be added
         error = 'Please only use one operator!';
         console.log(error);
     }
@@ -98,7 +98,7 @@ function evaluatePressed(){
         let secondEntry = inputValue.slice((operatorIndex + 2))
         
         console.log(secondEntry);
-        
+        //logic to check to make sure the expression has two values and an operator
         if(secondEntry[secondEntry.length-1] === '.'){
             error = 'Please include a value after the final decimal point.';
             console.log(error);
@@ -109,7 +109,7 @@ function evaluatePressed(){
         }
         else{
             console.log('The evaluation to send to server is: ', inputValue);
-            $.ajax({
+            $.ajax({ //send the server the string to parse and calculate
                 type: "POST",
                 url: "/evaluate",
                 data: {inputValue}
@@ -128,7 +128,7 @@ function evaluatePressed(){
     }
 }
 
-function clearEntry(){
+function clearEntry(){ //remove last chunk of input
     let inputValue = $('input').val();
     let lastInputIndex = inputValue.length - 1;
     let operatorIndex = inputValue.indexOf(operator);
@@ -146,6 +146,7 @@ function clearEntry(){
 }
 
 function getResult(){
+    //get the list for the table
     $.ajax({
         type: "GET",
         url: "/resultList"
