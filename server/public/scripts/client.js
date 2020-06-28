@@ -35,6 +35,7 @@ function onReady(){
     $('.operator').on('click', operatorPressed);
     $('.evaluate').on('click', evaluatePressed);
     $('.ac').on('click', clearInput);
+    $('.ce').on('click', clearEntry);
 }
 
 function updateResults(){
@@ -150,4 +151,20 @@ function evaluatePressed(){
     }
 }
 
-app.send()
+function clearEntry(){
+    let error = '';
+    let inputValue = $('input').val();
+    let lastInputIndex = inputValue.length - 1;
+    let operatorIndex = inputValue.indexOf(operator);
+    let newInputValue = '';
+
+    if(operator && operatorIndex + 1 !== lastInputIndex){
+         newInputValue = inputValue.slice(0,operatorIndex + 2);
+    }
+    else if(operator){
+         newInputValue = inputValue.slice(0,operatorIndex - 1);
+         operator = 0;
+    }
+    $('input').val(newInputValue);
+
+}
