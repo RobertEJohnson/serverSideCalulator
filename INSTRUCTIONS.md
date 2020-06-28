@@ -26,7 +26,7 @@ Keep a historical record of all math operations and solutions on the server. Dis
 
 ## Stretch Goals
 
-- Convert the interface to look and behave like a calculator as shown below.
+x Convert the interface to look and behave like a calculator as shown below.
 
   *Interfaces that mirror real world objects are often more intuitive and self-explanatory for users.*
 
@@ -34,7 +34,7 @@ Keep a historical record of all math operations and solutions on the server. Dis
 ![calculator interface](images/stretchGoal_interface.gif)
 ---
 
-- Only allow the POST call to happen if all necessary input is ready.
+x Only allow the POST call to happen if all necessary input is ready.
 
   *Data integrity is superfluously important! Sometimes users hit tje "go button" without fully inputting the needed fields. Show an alert if they left something empty and don't send bad or incomplete data to the server.*
 

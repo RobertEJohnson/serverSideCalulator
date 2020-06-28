@@ -1,31 +1,4 @@
-let tableArray = [
-    `<tr>
-        <td>19 + 3</td>
-        <td>= 1</td>
-    </tr>`, 
-    `<tr>
-        <td>22 + 3</td>
-        <td>= 2</td>
-    </tr>`,
-    `<tr>
-        <td>19 + 3</td>
-        <td>= 3</td>
-    </tr>`,  
-       `<tr>
-    <td>19 + 3</td>
-     <td>= 1</td>
- </tr>`, 
-`<tr>
-    <td>22 + 3</td>
-    <td>= 2</td>
-</tr>`,
-`<tr>
-    <td>19 + 3</td>
-    <td>= Last Result</td>
-</tr>`
-]
-
-let operator = 0;
+let operator = null;
 
 $(document).ready(onReady);
 
@@ -39,15 +12,8 @@ function onReady(){
 }
 
 function updateResults(){
-    for(let tr of tableArray){
-        console.log('appending tr', tr);
-        
-        $('tbody').append(tr);
-    }
     $('.scrollable').scrollTop(200000); 
 }
-
-
 
 function numberPressed(){
     let error = '';
@@ -118,7 +84,7 @@ function operatorPressed(){
 }
 
 function clearInput(){
-    operator = 0;
+    operator = null;
     $('input').val('')
 }
 
@@ -143,6 +109,17 @@ function evaluatePressed(){
         }
         else{
             console.log('The evaluation to send to server is: ', inputValue);
+            $.ajax({
+                type: "POST",
+                url: "/evaluate",
+                data: {inputValue}
+            }).then((response)=>{
+                console.log('Server Response: ', response);
+                getResult();
+                clearInput();
+            }).catch((error)=>{
+                alert('Error sending calculator input to server: ', error);
+            })
         }
     }
     else{
@@ -152,7 +129,6 @@ function evaluatePressed(){
 }
 
 function clearEntry(){
-    let error = '';
     let inputValue = $('input').val();
     let lastInputIndex = inputValue.length - 1;
     let operatorIndex = inputValue.indexOf(operator);
@@ -163,8 +139,30 @@ function clearEntry(){
     }
     else if(operator){
          newInputValue = inputValue.slice(0,operatorIndex - 1);
-         operator = 0;
+         operator = null;
     }
     $('input').val(newInputValue);
 
+}
+
+function getResult(){
+    $.ajax({
+        type: "GET",
+        url: "/resultList"
+    }).then((response)=>{
+        //obtain resultList
+        console.log(response);
+        $('tbody').empty();
+        for(item of response){
+          $('tbody').append(`
+          <tr>
+            <td>${item.expression.inputValue}</td>
+            <td>=${item.result}</td>
+          </tr>`);
+        }
+        $('.scrollable').scrollTop(200000);
+
+    }).catch((error)=>{
+        alert('Error obtaining evaluation results from server: ', error);
+    })
 }
