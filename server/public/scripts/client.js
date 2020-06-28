@@ -3,7 +3,7 @@ let operator = null;
 $(document).ready(onReady);
 
 function onReady(){
-    updateResults();
+    getResult();
     $('.number').on('click', numberPressed);
     $('.operator').on('click', operatorPressed);
     $('.evaluate').on('click', evaluatePressed);
