@@ -157,7 +157,7 @@ function getResult(){
           $('tbody').append(`
           <tr>
             <td>${item.expression.inputValue}</td>
-            <td>=${item.result}</td>
+            <td>= ${item.result}</td>
           </tr>`);
         }
         $('.scrollable').scrollTop(200000);
